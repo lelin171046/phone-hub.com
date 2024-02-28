@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Hub.com</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header>
+        <h3 class="text-6xl">Phone Hub.Com</h3>
+    </header>
+    <main class="mx-auto mt-8">
+        <section class="bg-gray-200 p-4 m-4">
+            <input id="search-fld" type="text" placeholder="Search here" class="input input-bordered input-info w-full max-w-xs" />
+            <button onclick="searchHandle()" class="btn btn-info">Search</button>
+            <input id="search-fld2" type="text" placeholder="Search here" class="input input-bordered input-success w-full max-w-xs" />
+            <button onclick="searchHandle2()" class="btn">SEARCH</button>
+        </section>
+        <!-- ///search result phone card -->
+        <section>
+            <div id="loading" class=" text-center hidden">
+                <span class="loading loading-bars loading-lg"></span>
+            </div>
+
+            <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+            </div>
+             <!-- see more button  -->
+             <div id="see-more" class="hidden">
+                <button class="btn btn-active btn-neutral">See more</button>
+             </div>
+        </section>
+       
+
+    </main>
+    <footer>
+
+    </footer>
+    <script src="js/phone.js"></script>
+</body>
+</html>
