@@ -1,27 +1,34 @@
-const loadPhone = async (searchText) => {
+const loadPhone = async (searchText, isShowAll) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phones = data.data;
-    displayPhones(phones);
+    displayPhones(phones, isShowAll);
 }
 
-const displayPhones  = phones =>{
+const displayPhones  = (phones, isShowAll ) =>{
     //1.get id
     const phoneContainer = document.getElementById('phone-container');
     // clear old search data 
     phoneContainer.textContent ='';
     ///show see more button if have more then 10.
             const seeAllPhone = document.getElementById('see-more');
-            if(phones.length > 12){
+            if(phones.length > 12 && !isShowAll){
                 seeAllPhone.classList.remove('hidden')
             }
             else{
                 seeAllPhone.classList.add('hidden')
             }
 
+            console.log('is show all', isShowAll)
 
     // display top 10 phone
+
+/////////display 1st 12 if not show all
+
+   if(!isShowAll){
     phones = phones.slice(0,12)
+   }
+
 
     phones.forEach(phone =>{
         console.log(phone);
@@ -36,9 +43,9 @@ const displayPhones  = phones =>{
                 <div class="card-body items-center text-center">
                 <h2 class="card-title">${phone.
                     phone_name}</h2>
-                <p>${phone.slug}</p>
+                <p>${phone.slug.image}</p>
                 <div class="card-actions">
-                    <button class="btn btn-primary">Buy Now</button>
+                    <button onclick="handleshowDetails('${phone.slug}')" class="btn btn-primary">Show details</button>
                 </div>
                 </div>`;
         phoneContainer.appendChild(phoneCard);
@@ -50,14 +57,25 @@ const displayPhones  = phones =>{
 
 }
 
+// show phn details
+
+const handleshowDetails = async(id) => {
+    console.log('data', id)
+    // load data
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+    const data = await res.json();
+    console.log(data);
+
+}
+
 // search handle
 
-const searchHandle = () => {
-    toggolespnner();
+const searchHandle = (isShowAll) => {
+    toggolespnner(true);
     const searchFiled = document.getElementById('search-fld');
     const searchText = searchFiled.value;
     console.log(searchText);
-    loadPhone(searchText);
+    loadPhone(searchText, isShowAll);
 }
 
 const toggolespnner = (isLoading)=>{
@@ -80,3 +98,9 @@ const searchHandle2 = () =>{
 }
 
 // loadPhone();
+///see all handle
+
+const seeAllHandle = () =>{
+    searchHandle(true)
+
+}

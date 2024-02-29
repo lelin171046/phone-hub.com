@@ -3,20 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phone Hub.com</title>
+    <title>Mobile Hub.com</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <header>
-        <h3 class="text-6xl">Phone Hub.Com</h3>
+        <div class="navbar bg-base-100">
+            <div class="navbar-start">
+              <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                </div>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                  <li><a>Homepage</a></li>
+                  <li><a>Portfolio</a></li>
+                  <li><a>About</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="navbar-center">
+              <a class="btn btn-ghost font-semibold text-6xl">Mobile Hub.Com</a>
+            </div>
+            <div class="navbar-end">
+              <button class="btn btn-ghost btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+              </button>
+              <button class="btn btn-ghost btn-circle">
+                <div class="indicator">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                  <span class="badge badge-xs badge-primary indicator-item"></span>
+                </div>
+              </button>
+            </div>
+          </div>
+        <h3 class="text-6xl"></h3>
     </header>
-    <main class="mx-auto mt-8">
+    <main class="mx-auto mt-8 bg-cover min-h-screen bg-no-repeat  " style="background-image: url(img/Mobile\ App\ Development\ Illustrated\ Facebook\ Cover.png);">
         <section class="bg-gray-200 p-4 m-4">
             <input id="search-fld" type="text" placeholder="Search here" class="input input-bordered input-info w-full max-w-xs" />
             <button onclick="searchHandle()" class="btn btn-info">Search</button>
-            <input id="search-fld2" type="text" placeholder="Search here" class="input input-bordered input-success w-full max-w-xs" />
-            <button onclick="searchHandle2()" class="btn">SEARCH</button>
+            <!-- <input id="search-fld2" type="text" placeholder="Search here" class="input input-bordered input-success w-full max-w-xs" />
+            <button onclick="searchHandle2()" class="btn">SEARCH</button> -->
         </section>
         <!-- ///search result phone card -->
         <section>
@@ -28,8 +56,8 @@
                 
             </div>
              <!-- see more button  -->
-             <div id="see-more" class="hidden">
-                <button class="btn btn-active btn-neutral">See more</button>
+             <div id="see-more" class="hidden my-4 text-center">
+                <button onclick="seeAllHandle()" class="btn btn-active btn-neutral">See more</button>
              </div>
         </section>
        
