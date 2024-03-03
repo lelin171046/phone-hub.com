@@ -39,7 +39,7 @@
           </div>
         <h3 class="text-6xl"></h3>
     </header>
-    <main class="mx-auto mt-8 bg-cover min-h-screen bg-no-repeat  " style="background-image: url(img/Mobile\ App\ Development\ Illustrated\ Facebook\ Cover.png);">
+    <main class="mx-auto mt-8 bg-fixed min-h-screen bg-no-repeat  " style="background-image: url(img/Mobile\ App\ Development\ Illustrated\ Facebook\ Cover.png);">
         <section class="bg-gray-200 p-4 m-4">
             <input id="search-fld" type="text" placeholder="Search here" class="input input-bordered input-info w-full max-w-xs" />
             <button onclick="searchHandle()" class="btn btn-info">Search</button>
@@ -60,7 +60,26 @@
                 <button onclick="seeAllHandle()" class="btn btn-active btn-neutral">See more</button>
              </div>
         </section>
-       
+       <section>
+        <!-- show details  -->
+        <!-- Open the modal using ID.showModal() method -->
+        <!-- Open the modal using ID.showModal() method -->
+            
+            <dialog id="showDetailsModal" class="modal">
+              <div class="modal-box">
+                <h3 id="showName" class="font-bold text-3xl"></h3>
+                <div id="show-details-phone-info" class="">
+
+                </div>
+                <div class="modal-action">
+                  <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn">Close</button>
+                  </form>
+                </div>
+              </div>
+            </dialog>
+       </section>
 
     </main>
     <footer>

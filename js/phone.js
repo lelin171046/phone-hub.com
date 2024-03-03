@@ -1,4 +1,4 @@
-const loadPhone = async (searchText, isShowAll) => {
+const loadPhone = async (searchText='iphone', isShowAll) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phones = data.data;
@@ -19,7 +19,7 @@ const displayPhones  = (phones, isShowAll ) =>{
                 seeAllPhone.classList.add('hidden')
             }
 
-            console.log('is show all', isShowAll)
+            // console.log('is show all', isShowAll)
 
     // display top 10 phone
 
@@ -31,7 +31,7 @@ const displayPhones  = (phones, isShowAll ) =>{
 
 
     phones.forEach(phone =>{
-        console.log(phone);
+        // console.log(phone);
         // 2.create div 
         const phoneCard = document.createElement('div');
         phoneCard.classList = 'card  bg-gray-100 shadow-xl';
@@ -43,9 +43,11 @@ const displayPhones  = (phones, isShowAll ) =>{
                 <div class="card-body items-center text-center">
                 <h2 class="card-title">${phone.
                     phone_name}</h2>
-                <p>${phone.slug.image}</p>
+                <p>more info loading.....</p>
                 <div class="card-actions">
-                    <button onclick="handleshowDetails('${phone.slug}')" class="btn btn-primary">Show details</button>
+                    <button onclick="handleshowDetails('${phone.slug}'); showDetailsModal.showModal()"
+                    
+                    class="btn btn-primary">Show details</button>
                 </div>
                 </div>`;
         phoneContainer.appendChild(phoneCard);
@@ -60,12 +62,29 @@ const displayPhones  = (phones, isShowAll ) =>{
 // show phn details
 
 const handleshowDetails = async(id) => {
-    console.log('data', id)
+    // console.log('data', id)
     // load data
     const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
+    const phoneData = data.data;
+    showPhoneDetails(phoneData)
+}
 
+// showAll details 
+const showPhoneDetails = (phone) =>{
+    console.log(phone)
+    const phoneName = document.getElementById('showName');
+    phoneName.innerText = phone.name;
+    const phoneAllDetailsInfo = document.getElementById('show-details-phone-info');
+    phoneAllDetailsInfo.innerHTML = `
+    <img src="${phone.image}" alt="">
+    <p><span>Storage: </span>
+    ${phone?.mainFeatures?.storage}
+    </p>`
+
+
+    showDetailsModal.showModal();
 }
 
 // search handle
@@ -97,7 +116,7 @@ const searchHandle2 = () =>{
     loadPhone(searchText)
 }
 
-// loadPhone();
+loadPhone();
 ///see all handle
 
 const seeAllHandle = () =>{
