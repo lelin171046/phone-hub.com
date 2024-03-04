@@ -43,6 +43,7 @@ const displayPhones  = (phones, isShowAll ) =>{
                 <div class="card-body items-center text-center">
                 <h2 class="card-title">${phone.
                     phone_name}</h2>
+                    
                 <p>Brand:<span>${phone?.brand}</span></p>
                 <div class="card-actions">
                     <button onclick="handleshowDetails('${phone.slug}'); showDetailsModal.showModal()"
@@ -82,12 +83,17 @@ const showPhoneDetails = (phone) =>{
     <p class="font-semibold"><span>Storage: </span>
     ${phone?.mainFeatures?.storage}
     </p>
+    <p><span>Release Date: </span>${phone?.releaseDate}</p>
     <p><span>Display: </span>
     ${phone?.mainFeatures?.displaySize}
     </p>
     <p><span>Processor: </span>
     ${phone?.mainFeatures?.chipSet}
-    </p>`
+    </p>
+    <p><span>Sensors: </span>
+    ${phone?.mainFeatures?.sensors}
+    </p>
+    `
 
 
     showDetailsModal.showModal();
