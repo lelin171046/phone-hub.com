@@ -43,7 +43,7 @@ const displayPhones  = (phones, isShowAll ) =>{
                 <div class="card-body items-center text-center">
                 <h2 class="card-title">${phone.
                     phone_name}</h2>
-                <p>more info loading.....</p>
+                <p>Brand:<span>${phone?.brand}</span></p>
                 <div class="card-actions">
                     <button onclick="handleshowDetails('${phone.slug}'); showDetailsModal.showModal()"
                     
@@ -79,8 +79,14 @@ const showPhoneDetails = (phone) =>{
     const phoneAllDetailsInfo = document.getElementById('show-details-phone-info');
     phoneAllDetailsInfo.innerHTML = `
     <img src="${phone.image}" alt="">
-    <p><span>Storage: </span>
+    <p class="font-semibold"><span>Storage: </span>
     ${phone?.mainFeatures?.storage}
+    </p>
+    <p><span>Display: </span>
+    ${phone?.mainFeatures?.displaySize}
+    </p>
+    <p><span>Processor: </span>
+    ${phone?.mainFeatures?.chipSet}
     </p>`
 
 
